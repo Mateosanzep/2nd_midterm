@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= hero.name %> · Super Heroes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <%- include('navbar') %>
+  <main class="hero-detail">
+    <div class="detail-wrapper">
+      <div class="detail-media">
+        <img
+          class="<%= heroMedia && heroMedia.isPlaceholder ? 'placeholder-image' : '' %>"
+          src="<%= heroMedia ? heroMedia.src : '/images/anonimus.png' %>"
+          alt="<%= heroMedia ? heroMedia.alt : hero.name + ' portrait' %>"
+        >
+      </div>
+      <div class="detail-header">
+        <p class="detail-id">ID <span>#<%= hero.id %></span></p>
+        <h1 class="detail-name"><%= hero.name %></h1>
+        <p class="detail-fullname">Full name: <span><%= hero.biography && hero.biography.fullName && hero.biography.fullName !== '-' ? hero.biography.fullName : 'Unknown' %></span></p>
+      </div>
+
+      <section class="detail-section">
+        <h2>Biography</h2>
+        <p class="detail-biography"><%= biographySnippet %></p>
+        <div class="detail-meta-grid">
+          <div>
+            <span class="label">Place of birth</span>
+            <span class="value"><%= hero.biography && hero.biography.placeOfBirth && hero.biography.placeOfBirth !== '-' ? hero.biography.placeOfBirth : 'Unknown' %></span>
+          </div>
+          <div>
+            <span class="label">Publisher</span>
+            <span class="value"><%= hero.biography && hero.biography.publisher && hero.biography.publisher !== '-' ? hero.biography.publisher : 'Unknown' %></span>
+          </div>
+          <div>
+            <span class="label">Alignment</span>
+            <span class="value"><%= hero.biography && hero.biography.alignment && hero.biography.alignment !== '-' ? hero.biography.alignment : 'Unknown' %></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <h2>Powerstats</h2>
+        <% const stats = Object.entries(hero.powerstats || {}); %>
+        <% if (stats.length) { %>
+          <ul class="stats-grid">
+            <% stats.forEach(([stat, value]) => { %>
+              <li>
+                <span class="label"><%= stat %></span>
+                <span class="value"><%= value %></span>
+              </li>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <p class="muted">No powerstats available.</p>
+        <% } %>
+      </section>
+
+      <section class="detail-section">
+        <h2>Aliases</h2>
+        <% if (aliases.length) { %>
+          <ul class="alias-list">
+            <% aliases.forEach((alias) => { %>
+              <li><%= alias %></li>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <p class="muted">No aliases listed.</p>
+        <% } %>
+      </section>
+
+      <section class="detail-section">
+        <h2>Appearance</h2>
+        <div class="detail-meta-grid">
+          <div>
+            <span class="label">Gender</span>
+            <span class="value"><%= hero.appearance && hero.appearance.gender && hero.appearance.gender !== '-' ? hero.appearance.gender : 'Unknown' %></span>
+          </div>
+          <div>
+            <span class="label">Race</span>
+            <span class="value"><%= hero.appearance && hero.appearance.race && hero.appearance.race !== 'null' ? hero.appearance.race : 'Unknown' %></span>
+          </div>
+          <div>
+            <span class="label">Height</span>
+            <span class="value"><%= hero.appearance && Array.isArray(hero.appearance.height) && hero.appearance.height.length ? hero.appearance.height.join(' / ') : 'Unknown' %></span>
+          </div>
+          <div>
+            <span class="label">Weight</span>
+            <span class="value"><%= hero.appearance && Array.isArray(hero.appearance.weight) && hero.appearance.weight.length ? hero.appearance.weight.join(' / ') : 'Unknown' %></span>
+          </div>
+          <div>
+            <span class="label">Eye color</span>
+            <span class="value"><%= hero.appearance && hero.appearance.eyeColor && hero.appearance.eyeColor !== '-' ? hero.appearance.eyeColor : 'Unknown' %></span>
+          </div>
+          <div>
+            <span class="label">Hair color</span>
+            <span class="value"><%= hero.appearance && hero.appearance.hairColor && hero.appearance.hairColor !== '-' ? hero.appearance.hairColor : 'Unknown' %></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <h2>Group affiliation</h2>
+        <p class="detail-biography"><%= hero.connections && hero.connections.groupAffiliation && hero.connections.groupAffiliation !== '-' ? hero.connections.groupAffiliation : 'None listed' %></p>
+      </section>
+
+      <div class="detail-actions">
+        <a class="btn detail-btn secondary" href="/catalog">&larr; Back to catalog</a>
+        <div class="detail-nav">
+          <% if (prevId) { %>
+            <a class="btn detail-btn" href="/heroes/<%= prevId %>">&larr; Previous</a>
+          <% } else { %>
+            <span class="btn detail-btn disabled">&larr; Previous</span>
+          <% } %>
+          <% if (nextId) { %>
+            <a class="btn detail-btn" href="/heroes/<%= nextId %>">Next &rarr;</a>
+          <% } else { %>
+            <span class="btn detail-btn disabled">Next &rarr;</span>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </main>
+  <%- include('footer') %>
+</body>
+</html>

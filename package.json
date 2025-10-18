@@ -1,0 +1,32 @@
+{
+  "name": "2nd_midterm",
+  "version": "1.0.0",
+  "description": "Second midterm API Superheroes",
+  "keywords": [
+    "Midterm",
+    "superheroes",
+    "API"
+  ],
+  "homepage": "https://github.com/Mateosanzep/2nd_midterm#readme",
+  "bugs": {
+    "url": "https://github.com/Mateosanzep/2nd_midterm/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mateosanzep/2nd_midterm.git"
+  },
+  "license": "ISC",
+  "author": "Mateo Sanchez Zepeda",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
