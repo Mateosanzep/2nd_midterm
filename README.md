@@ -1,35 +1,35 @@
 # Super Heroes catalog (2nd midterm)
 
-Pequeña aplicación hecha con **Node.js**, **Express** y **EJS** para repasar el consumo de la [Superhero API](https://akabab.github.io/superhero-api/api/). Muestra un catálogo con más de 700 personajes y permite entrar a la ficha de cada uno con sus datos principales.
+Small application built with **Node.js**, **Express**, and **EJS** to revisit the consumption of the [Superhero API](https://akabab.github.io/superhero-api/api/). It shows a catalog with more than 700 characters and lets you open each profile with its main data.
 
-## Requisitos previos
+## Prerequisites
 
-- Node.js 18 o superior
-- npm (viene con Node)
+- Node.js 18 or higher
+- npm (included with Node)
 
-## Cómo correr el proyecto
+## How to run the project
 
 ```bash
 npm install
 npm run start
 ```
 
-La app queda escuchando en `http://localhost:3000`. También hay un script `npm run dev` por si quieres ver los cambios en caliente con **nodemon**.
+The app listens on `http://localhost:3000`. There's also an `npm run dev` script if you want hot reloading with **nodemon**.
 
-## Qué hay en la app
+## What's in the app
 
-- `/` página de bienvenida con info del proyecto.
-- `/catalog` catálogo completo con tarjetas de héroes y un buscador en la barra superior.
-- `/heroes/:id` ficha individual con datos, alias, stats y botones para pasar al héroe anterior o siguiente.
+- `/` welcome page with project info.
+- `/catalog` full catalog with hero cards and a search bar at the top.
+- `/heroes/:id` individual profile with data, aliases, stats, and buttons to move to the previous or next hero.
 
-Todo el contenido se obtiene del archivo `all.json` de la Superhero API y se guarda en caché unos minutos para no bombardear la API.
+All content is fetched from the Superhero API `all.json` file and cached for a few minutes to avoid spamming the API.
 
-## Tecnologías usadas
+## Technologies used
 
-- Express 5 + EJS para las vistas.
-- Bootstrap 5 para estilos base + algunos estilos propios en `public/style.css`.
-- `https` nativo de Node para hacer las peticiones.
+- Express 5 + EJS for the views.
+- Bootstrap 5 for base styles plus some custom styles in `public/style.css`.
+- Node's native `https` module to make the requests.
 
-## Nota sobre IA
+## Note about AI
 
-Este README y varias cosas del código se realizaron con ayuda de ChatGPT. Por ejemplo, el diseño se realizaron los primeros borradores por mi y despues con la ayuda de la IA se le dio un mejor formato y consistente dentro de todas las paginas. El contenido completo de `homepage.ejs` fue proporcionado por la IA con un promt pidiendole que me de informacion acerca de la API que se pueda usar para dar una introducción. Tambien se uso para la ayuda y explicacion de ciertas funciones de node, las cuales no tenia conocimiento.
+This README and several parts of the code were created with help from ChatGPT. For example, I drafted the initial design and then used AI to give it a more polished and consistent format across all pages. The complete content of `homepage.ejs` was provided by the AI with a prompt asking for information about the API to use as an introduction. It was also used to explain certain Node functions I wasn't familiar with.
